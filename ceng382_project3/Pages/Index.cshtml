@@ -1,0 +1,241 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@using Microsoft.AspNetCore.Identity
+@using ceng382_project3.Data
+@using ceng382_project3.Models
+
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+<!-- Header / End -->
+<!-- Main -->
+<div class="main" role="main">
+    <!-- Slider -->
+    <section class="slider-holder">
+        <div class="container">
+            <div class="flexslider carousel">
+                <ul class="slides">
+                    <li>
+                        <img src="~/images/slide1.jpg" alt="" />
+                        <div class="flexslider-desc">
+                            <h1>The best care for your baby</h1>
+                            <a href="#" class="link">Learn More <i class="fa fa-angle-double-right"></i></a>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="~/images/clean2.jpg" alt="" />
+                        <div class="flexslider-desc">
+                            <h1>Find trusted/professional cleaner online</h1>
+                            <a href="#" class="link">Learn More <i class="fa fa-angle-double-right"></i></a>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="~/images/nany2.jpg" alt="" />
+                        <div class="flexslider-desc">
+                            <h1>Need a Nanny or Babysitter?</h1>
+                            <a href="#" class="link">Learn More <i class="fa fa-angle-double-right"></i></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- Slider / End -->
+    <!-- Page Content -->
+    <section class="page-content">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-4">
+                    <!-- Icon Box -->
+                    <div class="icon-box boxed circled icon-box-color__primary">
+                        <div class="icon">
+                            1
+                        </div>
+                        <div class="icon-box-body">
+                            <h2>Register to Site</h2>
+                            First you need to register our site. If you add enough budget you can use our service.
+                        </div>
+                    </div>
+                    <!-- Icon Box / End -->
+                </div>
+                <div class="col-md-4">
+                    <!-- Icon Box -->
+                    <div class="icon-box boxed circled icon-box-color__secondary">
+                        <div class="icon">
+                            2
+                        </div>
+                        <div class="icon-box-body">
+                            <h2>Contact Servant</h2>
+                            You can list our servants on list page, see his/her profile and make an appointment.
+                        </div>
+                    </div>
+                    <!-- Icon Box / End -->
+                </div>
+                <div class="col-md-4">
+                    <!-- Icon Box -->
+                    <div class="icon-box boxed circled icon-box-color__tertiary">
+                        <div class="icon">
+                            3
+                        </div>
+                        <div class="icon-box-body">
+                            <h2>Make an Appointment</h2>
+                            You can make an appointment after choose a servant.
+                        </div>
+                    </div>
+                    <!-- Icon Box / End -->
+                </div>
+            </div>
+
+            @if (!SignInManager.IsSignedIn(User))
+            {
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <!-- Call to Action -->
+                        <div class="call-to-action call-to-action__no-bg centered">
+                            <div class="cta-txt">
+                                <h1>Welcome to Our Site!</h1>
+                                <p>To use our service you need to register!</p>
+                            </div>
+                            <div class="cta-btn">
+                                <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-primary btn-lg">Join Now!</a>
+                            </div>
+                        </div>
+                        <!-- Call to Action / End -->
+                    </div>
+                </div>
+            }
+                <div class="spacer-lg"></div>
+
+
+                <h2>Latest Babysitters</h2>
+                <div class="row">
+                    <div class="col-xs-6 col-sm-3 col-md-3" data-animation="fadeInLeft" data-animation-delay="0">
+                        <div class="job-listing-box">
+                            <figure class="job-listing-img">
+                                <a href="job-profile.html"><img src="data:image;base64,@System.Convert.ToBase64String(Model.Servants[Model.ServantsCount-1].Picture)" alt=""></a>
+                            </figure>
+                            <div class="job-listing-body">
+                                <div class="name"><a asp-page="AddRating" asp-route-ratedUserID="@Model.Servants[Model.ServantsCount - 1].UserId">@Model.Servants[Model.ServantsCount - 1].FirstName @Model.Servants[Model.ServantsCount-1].LasName</a></div>
+                            </div>
+                            <footer class="job-listing-footer">
+                                <ul class="meta">
+                                    <li class="category">@Model.Servants[Model.ServantsCount - 1].Job</li>
+                                    <li class="location"><a href="#">@Model.Servants[Model.ServantsCount - 1].City</a></li>
+                                    <li class="date">Posted 1 day ago</li>
+                                </ul>
+                            </footer>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-3 col-md-3" data-animation="fadeInLeft" data-animation-delay="0">
+                        <div class="job-listing-box">
+                            <figure class="job-listing-img">
+                                <a href="job-profile.html"><img src="data:image;base64,@System.Convert.ToBase64String(Model.Servants[Model.ServantsCount-2].Picture)" alt=""></a>
+                            </figure>
+                            <div class="job-listing-body">
+                                <div class="name"><a asp-page="AddRating" asp-route-ratedUserID="@Model.Servants[Model.ServantsCount - 2].UserId">@Model.Servants[Model.ServantsCount - 2].FirstName @Model.Servants[Model.ServantsCount - 2].LasName</a></div>
+                            </div>
+                            <footer class="job-listing-footer">
+                                <ul class="meta">
+                                    <li class="category">@Model.Servants[Model.ServantsCount - 2].Job</li>
+                                    <li class="location"><a href="#">@Model.Servants[Model.ServantsCount - 2].City</a></li>
+                                    <li class="date">Posted 1 day ago</li>
+                                </ul>
+                            </footer>
+                        </div>
+                    </div>
+
+                    <div class="clearfix visible-xs"></div>
+                    <div class="spacer visible-xs"></div>
+
+                    <div class="col-xs-6 col-sm-3 col-md-3" data-animation="fadeInLeft" data-animation-delay="0">
+                        <div class="job-listing-box">
+                            <figure class="job-listing-img">
+                                <a href="job-profile.html"><img src="data:image;base64,@System.Convert.ToBase64String(Model.Servants[Model.ServantsCount-3].Picture)" alt=""></a>
+                            </figure>
+                            <div class="job-listing-body">
+                                <div class="name"><a asp-page="AddRating" asp-route-ratedUserID="@Model.Servants[Model.ServantsCount - 3].UserId">@Model.Servants[Model.ServantsCount - 3].FirstName @Model.Servants[Model.ServantsCount - 3].LasName</a></div>
+                            </div>
+                            <footer class="job-listing-footer">
+                                <ul class="meta">
+                                    <li class="category">@Model.Servants[Model.ServantsCount - 3].Job</li>
+                                    <li class="location"><a href="#">@Model.Servants[Model.ServantsCount - 3].City</a></li>
+                                    <li class="date">Posted 1 day ago</li>
+                                </ul>
+                            </footer>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-3 col-md-3" data-animation="fadeInLeft" data-animation-delay="0">
+                        <div class="job-listing-box">
+                            <figure class="job-listing-img">
+                                <a href="job-profile.html"><img src="data:image;base64,@System.Convert.ToBase64String(Model.Servants[Model.ServantsCount-4].Picture)" alt=""></a>
+                            </figure>
+                            <div class="job-listing-body">
+                                <div class="name"><a asp-page="AddRating" asp-route-ratedUserID="@Model.Servants[Model.ServantsCount - 4].UserId">@Model.Servants[Model.ServantsCount - 4].FirstName @Model.Servants[Model.ServantsCount - 4].LasName</a></div>
+                            </div>
+                            <footer class="job-listing-footer">
+                                <ul class="meta">
+                                    <li class="category">@Model.Servants[Model.ServantsCount - 4].Job</li>
+                                    <li class="location"><a href="#">@Model.Servants[Model.ServantsCount - 4].City</a></li>
+                                    <li class="date">Posted 1 day ago</li>
+                                </ul>
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="spacer-xl"></div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <h2>About Us</h2>
+                        <p class="lead">Best childcare and cleaning company.</p>
+                        <p>As a company, our main goal is to provide the most appropriate and closest service to you. </p>
+                        <p>As a company that provides you with the most suitable service with the highest quality, we care about you and your children, and we consider these in the selection of our employees. </p>
+                        <a asp-page="AboutUs" class="btn btn-primary">Read More</a>
+                    </div>
+                    <div class="col-md-4">
+                        <h2>Our Services</h2>
+                        <p>We provide more than one service as you can see on bottom. Our servants are professionals in their field.</p>
+                        <div class="list">
+                            <ul>
+                                <li>Babbysitter</li>
+                                <li>Nanny</li>
+                                <li>Cleaner</li>
+                                <li>Self Education</li>
+                                <li>Tutor/Private Lesson</li>
+                            </ul>
+                        </div>
+                        <a asp-page="Services" class="btn btn-primary">View All Services</a>
+                    </div>
+                    <div class="col-md-4">
+                        <h2>Our Tips</h2>
+                        <ul class="latest-posts-list">
+                            <li>
+                                <figure class="thumbnail"><a href="#"><img src="http://placehold.it/112x82" alt=""></a></figure>
+                                <span class="date">24/07/2013</span>
+                                <h5 class="title"><a href="#">Duis placerat rhoncus arcu, sit amet aliquam leo</a></h5>
+                            </li>
+                            <li>
+                                <figure class="thumbnail"><a href="#"><img src="http://placehold.it/112x82" alt=""></a></figure>
+                                <span class="date">16/07/2013</span>
+                                <h5 class="title"><a href="#">Mauris in arcu aliq, elementum nibh nec</a></h5>
+                            </li>
+                            <li>
+                                <figure class="thumbnail"><a href="#"><img src="http://placehold.it/112x82" alt=""></a></figure>
+                                <span class="date">14/07/2013</span>
+                                <h5 class="title"><a href="#">Vestibulum in ligula rutrum faucibus interdum</a></h5>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <!-- Page Content / End -->
+    <!-- Footer -->
+</div>

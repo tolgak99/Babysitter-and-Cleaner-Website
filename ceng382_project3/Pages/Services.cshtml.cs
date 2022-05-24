@@ -1,0 +1,99 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using ceng382_project3.Data;
+using ceng382_project3.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+
+namespace ceng382_project3.Pages
+{
+    public class ServicesModel : PageModel
+    {
+        private readonly ApplicationDbContext _context;
+        private readonly UserManager<User> _userManager;
+
+        public IList<Appointments> Servants { get; set; }
+        public List<InputModel> Users { get; set; }
+
+        public int ServantsCount { get; set; }
+
+        public ServicesModel(UserManager<User> userManager, ApplicationDbContext context)
+        {
+            _userManager = userManager;
+            _context = context;
+            Users = new();
+        }
+
+        public IList<Appointments> Appoint { get; set; }
+
+        //private IList<User> UserNames { get; set; }
+
+        //public IList<User> Users { get; set; }
+
+
+
+        public class InputModel
+        {
+            [Required]
+            [DataType(DataType.Text)]
+            public string FirstName { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            public string LastName { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            public string City { get; set; }
+
+            [Required]
+            [DataType(DataType.DateTime)]
+            public DateTime DeadLine { get; set; }
+
+            [Required]
+            [DataType(DataType.DateTime)]
+            public string PhoneNumber { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            public string Address { get; set; }
+
+        }
+
+        public async Task OnGet()
+        {
+
+            var query = (from m in _context.Appointments
+                         join dm in _context.Users on m.CustomerId equals dm.Id
+                         select new
+                         {
+                             CustomerName = dm.FirstName,
+                             CustomerLastName = dm.LasName,
+                             CustomerCity = dm.City,
+                             CustomerPhone = dm.PhoneNumber,
+                             AppointmentDate = m.Deadline,
+                             AppointmentAddress = m.Address
+                         }).ToList();
+
+            foreach (var item in query)
+            {
+                InputModel Input = new InputModel();
+
+                Input.FirstName = item.CustomerName;
+                Input.LastName = item.CustomerLastName;
+                Input.City = item.CustomerCity;
+                Input.DeadLine = item.AppointmentDate;
+                Input.Address = item.AppointmentAddress;
+                Input.PhoneNumber = item.CustomerPhone;
+
+                Users.Add(Input);
+            }
+        }
+    }
+}

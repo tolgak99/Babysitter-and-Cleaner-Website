@@ -1,0 +1,210 @@
+﻿@page
+@model ceng382_project3.Pages.BabySitterListModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<!--<form method="post">
+    <div class="form-group">
+        <sup>*</sup>Category
+        <select asp-for="ServantJob" asp-items="Model.Jobs" class="form-control">
+            <option value="null">--Select Job--</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <sup>*</sup>Priority
+        <select asp-for="ServantCity" asp-items="Model.Cities" class="form-control">
+            <option value="null">--Select City--</option>
+        </select>
+    </div>
+    <button class="btn btn-primary" type="submit">Search</button>
+</form>-->
+<section class="page-content">
+    <div class="container">
+        <div class="job_listings">
+            <form class="job_filters" method="post">
+                <div class="search_jobs">
+                    <div class="search_type">
+                        <span class="select-style">
+                            <select asp-for="ServantJob" asp-items="Model.Jobs" class="form-control">
+                                <option value="null">--Select Job--</option>
+                            </select>
+                        </span>
+                    </div>
+
+                    <div class="search_type">
+                        <span class="select-style">
+                            <select asp-for="ServantCity" asp-items="Model.Cities" class="form-control">
+                                <option value="null">--Select City--</option>
+                            </select>
+                        </span>
+                    </div>
+                    <div class="search_submit">
+                        <button class="btn btn-primary" type="submit">Search</button>
+                    </div>
+                </div>
+            </form>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Picture
+                        </th>
+                        <th>
+                            FirstName
+                        </th>
+                        <th>
+                            LastName
+                        </th>
+                        <th>
+                            City
+                        </th>
+                        <th>
+                            Job
+                        </th>
+                        <th>
+                            Rating
+                        </th>
+                    </tr>
+                </thead>
+                @if (Model.HasSearch)
+                {
+                    @if (Model.SearchResult.Any())
+                    {
+                        <tbody>
+                            @foreach (var item in Model.SearchResult)
+                            {
+                                <tr>
+                                    <td><img style="border-radius: 50%; width: 30px; height: 30px;" src="data:image;base64,@System.Convert.ToBase64String(item.Picture)" id="profile-pic" alt="Profile picture" /></td>
+                                    <td>@Html.DisplayFor(model => item.FirstName)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.LasName)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.City)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Job)</td>
+                                    <td>
+                                        @if (item.Rating >= 5)
+                                        {
+                                            <span style="color:orange;" class="fa fa-star"></span>
+                                            <span style="color:orange;" class="fa fa-star"></span>
+                                            <span style="color:orange;" class="fa fa-star"></span>
+                                            <span style="color:orange;" class="fa fa-star"></span>
+                                            <span style="color:orange;" class="fa fa-star"></span>
+                                        }
+                                        else if (item.Rating == 4)
+                                        {
+                                            <span style="color:orange;" class="fa fa-star"></span>
+                                            <span style="color:orange;" class="fa fa-star"></span>
+                                            <span style="color:orange;" class="fa fa-star"></span>
+                                            <span style="color:orange;" class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                        }
+                                        else if (item.Rating == 3)
+                                        {
+                                            <span style="color:orange;" class="fa fa-star"></span>
+                                            <span style="color:orange;" class="fa fa-star"></span>
+                                            <span style="color:orange;" class="fa fa-star"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star"></span>
+                                        }
+                                        else if (item.Rating == 2)
+                                        {
+                                            <span style="color:orange;" class="fa fa-star"></span>
+                                            <span style="color:orange;" class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                        }
+                                        else if (item.Rating == 1)
+                                        {
+                                            <span style="color:orange;" class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                        }
+                                        else if (item.Rating <= 0)
+                                        {
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                        }
+                                    </td>
+                                    <td> <a class="btn btn-primary" asp-page="AddRating" asp-route-ratedUserID="@item.UserId">More Info</a> </td>
+                                </tr>
+                            }
+                        </tbody>
+                    }
+                }
+                else
+                {
+                    <tbody>
+                        @foreach (var item in Model.Babysitters)
+                        {
+                            <tr>
+                                <td><img style="border-radius: 50%; width: 30px; height: 30px;" src="data:image;base64,@System.Convert.ToBase64String(item.Picture)" id="profile-pic" alt="Profile picture" /></td>
+                                <td>@Html.DisplayFor(model => item.FirstName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.LasName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.City)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Job)</td>
+                                <td>
+                                    @if (item.Rating >= 5)
+                                    {
+                                        <span style="color:orange;" class="fa fa-star"></span>
+                                        <span style="color:orange;" class="fa fa-star"></span>
+                                        <span style="color:orange;" class="fa fa-star"></span>
+                                        <span style="color:orange;" class="fa fa-star"></span>
+                                        <span style="color:orange;" class="fa fa-star"></span>
+                                    }
+                                    else if (item.Rating == 4)
+                                    {
+                                        <span style="color:orange;" class="fa fa-star"></span>
+                                        <span style="color:orange;" class="fa fa-star"></span>
+                                        <span style="color:orange;" class="fa fa-star"></span>
+                                        <span style="color:orange;" class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                    }
+                                    else if (item.Rating == 3)
+                                    {
+                                        <span style="color:orange;" class="fa fa-star"></span>
+                                        <span style="color:orange;" class="fa fa-star"></span>
+                                        <span style="color:orange;" class="fa fa-star"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star"></span>
+                                    }
+                                    else if (item.Rating == 2)
+                                    {
+                                        <span style="color:orange;" class="fa fa-star"></span>
+                                        <span style="color:orange;" class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                    }
+                                    else if (item.Rating == 1)
+                                    {
+                                        <span style="color:orange;" class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                    }
+                                    else if (item.Rating <= 0)
+                                    {
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                    }
+                                </td>
+                                <td> <a class="btn btn-primary" asp-page="AddRating" asp-route-ratedUserID="@item.UserId">More Info</a> </td>
+                            </tr>
+                        }
+                    </tbody>
+                }
+            </table>
+        </div>
+    </div>
+</section>

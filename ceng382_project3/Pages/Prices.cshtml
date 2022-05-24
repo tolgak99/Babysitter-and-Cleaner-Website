@@ -1,0 +1,222 @@
+﻿@page
+@model ceng382_project3.Pages.PricesModel
+@{
+    ViewData["Title"] = "Contact Page";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@using Microsoft.AspNetCore.Identity
+@using ceng382_project3.Data
+@using ceng382_project3.Models
+
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+<section class="page-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Pricing Tables</h1>
+            </div>
+            <div class="col-md-6">
+                <ul class="breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li class="active">Pricing Tables</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Page Heading / End -->
+<!-- Page Content -->
+<section class="page-content">
+    <div class="container">
+
+        <!--<h2>4 columns</h2>
+        <div class="row">
+            <div class="pricing-table">
+                <div class="col-md-3">
+                    <div class="plan">
+                        <header class="pricing-head">
+                            <h3>Free</h3>
+                            <span class="price"><sup>$</sup> 00</span>
+                            <small>per month</small>
+                        </header>
+                        <div class="pricing-body">
+                            <ul>
+                                <li>Proin gravida nibhconseq</li>
+                                <li>Enean sollicitud</li>
+                                <li>Lorem quis bibendum</li>
+                                <li>Aliquam laoreet sodales</li>
+                                <li>Enean sollicitud</li>
+                                <li>Lorem quis bibendum</li>
+                                <li>Aliquam laoreet sodales</li>
+                            </ul>
+                        </div>
+                        <footer class="pricing-footer">
+                            <a href="#" class="btn btn-default">Buy Now</a>
+                        </footer>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="plan popular">
+                        <header class="pricing-head">
+                            <h3>Popular</h3>
+                            <span class="price"><sup>$</sup> 19</span>
+                            <small>per month</small>
+                        </header>
+                        <div class="pricing-body">
+                            <ul>
+                                <li>Proin gravida nibhconseq</li>
+                                <li>Enean sollicitud</li>
+                                <li>Lorem quis bibendum</li>
+                                <li>Aliquam laoreet sodales</li>
+                                <li>Enean sollicitud</li>
+                                <li>Lorem quis bibendum</li>
+                                <li>Aliquam laoreet sodales</li>
+                            </ul>
+                        </div>
+                        <footer class="pricing-footer">
+                            <a href="#" class="btn btn-primary">Buy Now</a>
+                        </footer>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="plan">
+                        <header class="pricing-head">
+                            <h3>Basic</h3>
+                            <span class="price"><sup>$</sup> 29</span>
+                            <small>per month</small>
+                        </header>
+                        <div class="pricing-body">
+                            <ul>
+                                <li>Proin gravida nibhconseq</li>
+                                <li>Enean sollicitud</li>
+                                <li>Lorem quis bibendum</li>
+                                <li>Aliquam laoreet sodales</li>
+                                <li>Enean sollicitud</li>
+                                <li>Lorem quis bibendum</li>
+                                <li>Aliquam laoreet sodales</li>
+                            </ul>
+                        </div>
+                        <footer class="pricing-footer">
+                            <a href="#" class="btn btn-default">Buy Now</a>
+                        </footer>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="plan">
+                        <header class="pricing-head">
+                            <h3>Premium</h3>
+                            <span class="price"><sup>$</sup> 39</span>
+                            <small>per month</small>
+                        </header>
+                        <div class="pricing-body">
+                            <ul>
+                                <li>Proin gravida nibhconseq</li>
+                                <li>Enean sollicitud</li>
+                                <li>Lorem quis bibendum</li>
+                                <li>Aliquam laoreet sodales</li>
+                                <li>Enean sollicitud</li>
+                                <li>Lorem quis bibendum</li>
+                                <li>Aliquam laoreet sodales</li>
+                            </ul>
+                        </div>
+                        <footer class="pricing-footer">
+                            <a href="#" class="btn btn-default">Buy Now</a>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="lg">-->
+
+        <h2>3 columns</h2>
+        <div class="row">
+            <div class="pricing-table">
+                <div class="col-md-4">
+                    <div class="plan">
+                        <header class="pricing-head">
+                            <h3>BabySitter</h3>
+                            <span class="price"><sup>$</sup> 50</span>
+                            <small>per day</small>
+                        </header>
+                        <div class="pricing-body">
+                            <ul>
+                                <li>Proin gravida nibhconseq</li>
+                                <li>Enean sollicitud</li>
+                                <li>Lorem quis bibendum</li>
+                                <li>Aliquam laoreet sodales</li>
+                                <li>Enean sollicitud</li>
+                                <li>Lorem quis bibendum</li>
+                                <li>Aliquam laoreet sodales</li>
+                            </ul>
+                        </div>
+                        <footer class="pricing-footer">
+                            <a href="#" class="btn btn-default">Buy Now</a>
+                        </footer>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="plan popular">
+                        <header class="pricing-head">
+                            <h3>Nany</h3>
+                            <span class="price"><sup>$</sup> 50</span>
+                            <small>per day</small>
+                        </header>
+                        <div class="pricing-body">
+                            <ul>
+                                <li>Proin gravida nibhconseq</li>
+                                <li>Enean sollicitud</li>
+                                <li>Lorem quis bibendum</li>
+                                <li>Aliquam laoreet sodales</li>
+                                <li>Enean sollicitud</li>
+                                <li>Lorem quis bibendum</li>
+                                <li>Aliquam laoreet sodales</li>
+                            </ul>
+                        </div>
+                        <footer class="pricing-footer">
+                            <a href="#" class="btn btn-primary">Buy Now</a>
+                        </footer>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="plan">
+                        <header class="pricing-head">
+                            <h3>HouseKeeper</h3>
+                            <span class="price"><sup>$</sup> 50</span>
+                            <small>per day</small>
+                        </header>
+                        <div class="pricing-body">
+                            <ul>
+                                <li>Proin gravida nibhconseq</li>
+                                <li>Enean sollicitud</li>
+                                <li>Lorem quis bibendum</li>
+                                <li>Aliquam laoreet sodales</li>
+                                <li>Enean sollicitud</li>
+                                <li>Lorem quis bibendum</li>
+                                <li>Aliquam laoreet sodales</li>
+                            </ul>
+                        </div>
+                        @if (UserManager.GetUserAsync(User).Result.Budget >= 50)
+                        {
+                            <footer class="pricing-footer">
+                                <a asp-area="" asp-page="/BabySitterList" class="btn btn-default">Buy Now</a>
+                            </footer>
+                        }
+                        else
+                        {
+                             <footer class="pricing-footer">
+                                <a asp-area="" asp-page="/Checkout" class="btn btn-default">Buy Now</a>
+                            </footer>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

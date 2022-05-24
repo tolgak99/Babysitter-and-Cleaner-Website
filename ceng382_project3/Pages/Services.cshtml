@@ -1,0 +1,169 @@
+﻿@page
+@model ceng382_project3.Pages.ServicesModel
+@{
+    ViewData["Title"] = "Services";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<section class="page-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Services</h1>
+            </div>
+            <div class="col-md-6">
+                <ul class="breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Pages</a></li>
+                    <li class="active">Services</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Page Heading / End -->
+<!-- Page Content -->
+<section class="page-content">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-4">
+                <!-- Icon Box -->
+                <div class="icon-box circled icon-box-color__primary">
+                    <div class="icon">
+                        <i class="fa fa-shield fa-3x"></i>
+                    </div>
+                    <div class="icon-box-body">
+                        <h3>Temporary Childcare</h3>
+                        Our trained and expert staff will take care of your children as if they were their own.
+                    </div>
+                </div>
+                <!-- Icon Box -->
+            </div>
+            <div class="col-md-4">
+                <!-- Icon Box -->
+                <div class="icon-box circled icon-box-color__secondary">
+                    <div class="icon">
+                        <i class="fa fa-stethoscope fa-3x"></i>
+                    </div>
+                    <div class="icon-box-body">
+                        <h3>Areas Served</h3>
+                        Our professional cleaning, babysitting and nanny services are with you...
+                    </div>
+                </div>
+                <!-- Icon Box -->
+            </div>
+            <div class="col-md-4">
+                <!-- Icon Box -->
+                <div class="icon-box circled icon-box-color__tertiary">
+                    <div class="icon">
+                        <i class="fa fa-location-arrow fa-3x"></i>
+                    </div>
+                    <div class="icon-box-body">
+                        <h3>Nanny Placement</h3>
+                        With our nanny service, we serve your children between the ages of 3 and 15 in an educational way.
+                    </div>
+                </div>
+                <!-- Icon Box -->
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <!-- Icon Box -->
+                <div class="icon-box circled icon-box-color__quaternary">
+                    <div class="icon">
+                        <i class="fa fa-file-text-o fa-3x"></i>
+                    </div>
+                    <div class="icon-box-body">
+                        <h3>Home Clean</h3>
+                        You will be very pleased with our one-person professional house cleaning service.
+                    </div>
+                </div>
+                <!-- Icon Box -->
+            </div>
+            <div class="col-md-4">
+                <!-- Icon Box -->
+                <div class="icon-box circled icon-box-color__primary">
+                    <div class="icon">
+                        <i class="fa fa-check-circle fa-3x"></i>
+                    </div>
+                    <div class="icon-box-body">
+                        <h3>Background Checks</h3>
+                        Reaching the background and training of all our employees is just a click away.
+                    </div>
+                </div>
+                <!-- Icon Box -->
+            </div>
+            <div class="col-md-4">
+                <!-- Icon Box -->
+                <div class="icon-box circled icon-box-color__senary">
+                    <div class="icon">
+                        <i class="fa fa-lightbulb-o fa-3x"></i>
+                    </div>
+                    <div class="icon-box-body">
+                        <h3>References</h3>
+                        For our references, you can look at past customer reviews and our employee ratings.
+                    </div>
+                </div>
+                <!-- Icon Box -->
+            </div>
+        </div>
+
+        <hr class="hr__bold lg">
+
+        @if (@Model.Users.Count > 0)
+        { 
+            <h2>What Clients Say</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="testimonial">
+                        <blockquote>
+                            <p>I use this site to find proffessional cleaner in every week!</p>
+                        </blockquote>
+                        <div class="bq-author">
+                            <figure class="author-img">
+                                <img src="http://placehold.it/60x60" alt="">
+                            </figure>
+                            <h6>@Model.Users[1].FirstName @Model.Users[1].LastName</h6>
+                            <span class="bq-author-info">@Model.Users[1].DeadLine</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial">
+                        <blockquote>
+                            <p>Babysitter was very professional and prices are cheapest in the world!</p>
+                        </blockquote>
+                        <div class="bq-author">
+                            <figure class="author-img">
+                                <img src="http://placehold.it/60x60" alt="">
+                            </figure>
+                            <h6>@Model.Users[2].FirstName @Model.Users[2].LastName</h6>
+                            <span class="bq-author-info">@Model.Users[2].DeadLine</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial">
+                        <blockquote>
+                            <p>I wish to be a child for these nanies!</p>
+                        </blockquote>
+                        <div class="bq-author">
+                            <figure class="author-img">
+                                <img src="http://placehold.it/60x60" alt="">
+
+                            </figure>
+                            <h6>@Model.Users[3].FirstName @Model.Users[3].LastName</h6>
+                            <span class="bq-author-info">@Model.Users[3].DeadLine</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <hr class="hr__bold lg">
+
+    </div>
+</section>

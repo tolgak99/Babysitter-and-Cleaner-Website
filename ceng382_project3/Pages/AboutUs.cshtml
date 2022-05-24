@@ -1,0 +1,235 @@
+﻿@page
+@model ceng382_project3.Pages.AboutUsModel
+@{
+    ViewData["Title"] = "About Us";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<section class="page-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>About Us</h1>
+            </div>
+            <div class="col-md-6">
+                <ul class="breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Pages</a></li>
+                    <li class="active">About Us</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Page Heading / End -->
+<!-- Page Content -->
+<section class="page-content">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-6">
+                <figure class="alignnone">
+                    <img src="~/images/about.jpg" alt="">
+                </figure>
+            </div>
+            <div class="col-md-6">
+                <h2>Best childcare and cleaning company.</h2>
+                <p>As a company, our main goal is to provide the most appropriate and closest service to you. </p>
+                <p>As a company that provides you with the most suitable service with the highest quality, we care about you and your children, and we consider these in the selection of our employees. </p>
+
+                <div class="spacer-sm"></div>
+            </div>
+        </div>
+
+        <div class="spacer-lg"></div>
+
+        <h2>For Parents</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <!-- Icon Box -->
+                <div class="icon-box circled icon-box-color__primary">
+                    <div class="icon">
+                        <i class="fa fa-lightbulb-o fa-3x"></i>
+                    </div>
+                    <div class="icon-box-body">
+                        <h3>Register to Site</h3>
+                        First you need to register our site. If you add enough budget you can use our service.
+                    </div>
+                </div>
+                <!-- Icon Box / End -->
+            </div>
+            <div class="col-md-4">
+                <!-- Icon Box -->
+                <div class="icon-box circled icon-box-color__secondary">
+                    <div class="icon">
+                        <i class="fa fa-user fa-3x"></i>
+                    </div>
+                    <div class="icon-box-body">
+                        <h3>Contact Servant</h3>
+                        You can list our servants on list page, see his/her profile and make an appointment.
+                    </div>
+                </div>
+                <!-- Icon Box / End -->
+            </div>
+            <div class="col-md-4">
+                <!-- Icon Box -->
+                <div class="icon-box circled icon-box-color__tertiary">
+                    <div class="icon">
+                        <i class="fa fa-check fa-3x"></i>
+                    </div>
+                    <div class="icon-box-body">
+                        <h3>Make an Appointment</h3>
+                        You can make an appointment after choose a servant.
+                    </div>
+                </div>
+                <!-- Icon Box / End -->
+            </div>
+        </div>
+
+        <div class="spacer-lg"></div>
+
+        <h2>For Servants</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <!-- Icon Box -->
+                <div class="icon-box circled icon-box-color__primary">
+                    <div class="icon">
+                        <i class="fa fa-pencil fa-3x"></i>
+                    </div>
+                    <div class="icon-box-body">
+                        <h3>Register to BabySitter</h3>
+                        First register to our site select your position.
+                    </div>
+                </div>
+                <!-- Icon Box / End -->
+            </div>
+            <div class="col-md-4">
+                <!-- Icon Box -->
+                <div class="icon-box circled icon-box-color__secondary">
+                    <div class="icon">
+                        <i class="fa fa-thumbs-o-up fa-3x"></i>
+                    </div>
+                    <div class="icon-box-body">
+                        <h3>Got a Job</h3>
+                        Wait for our admins will approve your application confirm very soon.
+                    </div>
+                </div>
+                <!-- Icon Box / End -->
+            </div>
+            <div class="col-md-4">
+                <!-- Icon Box -->
+                <div class="icon-box circled icon-box-color__tertiary">
+                    <div class="icon">
+                        <i class="fa fa-star-o fa-3x"></i>
+                    </div>
+                    <div class="icon-box-body">
+                        <h3>Become a Star</h3>
+                        Get your job. Do best!
+                    </div>
+                </div>
+                <!-- Icon Box / End -->
+            </div>
+        </div>
+
+        <hr class="lg">
+
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Guide to Success</h2>
+                <div class="panel-group panel-group__alt" id="accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#accordion-1">
+                                    For Finding the Right Babysitter
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="accordion-1" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <p>Vivamus eget elit ultricies, convallis urna in, sagittis nulla. Duis sollicitudin suscipit nisi. Etiam sit amet ipsum urna. Etiam mi diam, tincidunt in libero vel, commodo suscipit risus. Nam pharetra auctor volutpat.</p>
+
+                                Vivamus malesuada at nisl quis posuere. Aliquam interdum urna nec ligula viverra, non rhoncus enim iaculis.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#accordion-2" class="collapsed">
+                                    Preparing for a New Sitter
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="accordion-2" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <p>Vivamus eget elit ultricies, convallis urna in, sagittis nulla. Duis sollicitudin suscipit nisi. Etiam sit amet ipsum urna. Etiam mi diam, tincidunt in libero vel, commodo suscipit risus. Nam pharetra auctor volutpat.</p>
+
+                                Vivamus malesuada at nisl quis posuere. Aliquam interdum urna nec ligula viverra, non rhoncus enim iaculis.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#accordion-3" class="collapsed">
+                                    Red Flags to Watch Out For When Choosing a Sitter
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="accordion-3" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <p>Vivamus eget elit ultricies, convallis urna in, sagittis nulla. Duis sollicitudin suscipit nisi. Etiam sit amet ipsum urna. Etiam mi diam, tincidunt in libero vel, commodo suscipit risus. Nam pharetra auctor volutpat.</p>
+
+                                Vivamus malesuada at nisl quis posuere. Aliquam interdum urna nec ligula viverra, non rhoncus enim iaculis.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="spacer-lg visible-sm visible-xs"></div>
+                <h2>Our Capabilities</h2>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
+                        <span class="progress-label">UI Design</span>
+                        80%
+                    </div>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
+                        <span class="progress-label">Branding &amp; Identity</span>
+                        70%
+                    </div>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                        <span class="progress-label">JavaScript</span>
+                        60%
+                    </div>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
+                        <span class="progress-label">HTML5&amp;CSS3</span>
+                        90%
+                    </div>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
+                        <span class="progress-label">WordPress</span>
+                        70%
+                    </div>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                        <span class="progress-label">PHP &amp; MySQL</span>
+                        60%
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="lg">
+
+    </div>
+</section>

@@ -1,0 +1,145 @@
+﻿@page
+@model ceng382_project3.Pages.ContactsModel
+@{
+    ViewData["Title"] = "Contact Page";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<!-- Page Heading -->
+<section class="page-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Contacts</h1>
+            </div>
+            <div class="col-md-6">
+                <ul class="breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active">Contacts</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Page Heading / End -->
+<!-- Page Content -->
+<section class="page-content">
+
+    <div class="container">
+
+        <!-- Google Map -->
+        <div class="googlemap-wrapper">
+            <div id="map_canvas" class="map-canvas">
+                <!--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3064.4811180279085!2d32.56034201563584!3d39.81862949971977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d317c30f845953%3A0x5f3e95544c6eecc7!2s%C3%87ankaya%20%C3%9Cniversitesi!5e0!3m2!1str!2str!4v1616255666289!5m2!1str!2str"  allowfullscreen="" loading="lazy"></iframe> -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12257.925203365996!2d32.5625307!3d39.8186254!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5f3e95544c6eecc7!2s%C3%87ankaya%20%C3%9Cniversitesi!5e0!3m2!1str!2str!4v1623067205611!5m2!1str!2str" width="1126" height="390" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+        <!-- Google Map / End -->
+
+        <div class="row">
+            <div class="col-md-4">
+                <hr class="visible-sm visible-xs lg">
+                <!-- Widget :: Contacts Info -->
+                <div class="contacts-widget widget widget__sidebar">
+                    <h3 class="widget-title">Contact Info</h3>
+                    <div class="widget-content">
+                        <ul class="contacts-info-list">
+                            <li>
+                                <i class="fa fa-map-marker"></i>
+                                <div class="info-item">
+                                    Babysitter Co., Çankaya, Ankara, TURKEY 23000
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fa fa-phone"></i>
+                                <div class="info-item">
+                                    +90 537 537 5337<br>
+                                    +90 537 537 5338
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fa fa-envelope"></i>
+                                <span class="info-item">
+                                    <a href="mailto:info@dan-fisher.com">info@babysitter.com</a>
+                                </span>
+                            </li>
+                            <li>
+                                <i class="fa fa-skype"></i>
+                                <div class="info-item">
+                                    <a href="#">baby_sitter</a><br>
+                                    <a href="#">help_babysitter</a>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fa fa-clock-o"></i>
+                                <div class="info-item">
+                                    Monday - Friday 9:00 - 21:00
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /Widget :: Contacts Info -->
+            </div>
+            <div class="col-md-8">
+                <h2>Contact Form</h2>
+                <form action="php/contact-form.php" id="contact-form">
+
+                    <div class="alert alert-success hidden" id="contact-alert-success">
+                        <strong>Success!</strong> Thank you for your message. Reply will be in a while!
+                    </div>
+                    <div class="alert alert-danger hidden" id="contact-alert-error">
+                        <strong>Error!</strong> Something went wrong sending your message.
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label>Name <span class="required">*</span></label>
+                                <input type="text"
+                                       value=""
+                                       data-msg-required="Please enter your name."
+                                       class="form-control"
+                                       name="name" id="name">
+                            </div>
+                            <div class="form-group">
+                                <label>Email <span class="required">*</span></label>
+                                <input type="email"
+                                       value=""
+                                       data-msg-required="Please enter your email address."
+                                       data-msg-email="Please enter a valid email address."
+                                       class="form-control"
+                                       name="email"
+                                       id="email">
+                            </div>
+                            <div class="form-group">
+                                <label>Subject</label>
+                                <input type="text"
+                                       value=""
+                                       data-msg-required="Please enter the subject."
+                                       class="form-control"
+                                       name="subject"
+                                       id="subject">
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                <label>Message <span class="required">*</span></label>
+                                <textarea data-msg-required="Please enter your message."
+                                          rows="11"
+                                          class="form-control"
+                                          name="message"
+                                          id="message"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <input type="submit" value="Send Message" class="btn btn-primary" data-loading-text="Loading...">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</section>

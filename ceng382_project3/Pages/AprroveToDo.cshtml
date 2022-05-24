@@ -1,0 +1,67 @@
+﻿@page
+@model ceng382_project3.Pages.AprroveToDoModel
+@{
+    ViewData["Title"] = "Approve";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<form method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Servants[0].Picture)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Servants[0].FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Servants[0].LasName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Servants[0].City)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Servants[0].DOB)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Servants[0].Job)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Servants[0].Description)
+                </th>
+                <th>
+                    Is approved?
+                </th>
+                <th>
+                    Approve
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Servants)
+            {
+            <tr>
+                <td><img style="border-radius: 50%; width: 30px; height: 30px;" src="data:image;base64,@System.Convert.ToBase64String(item.Picture)" id="profile-pic" alt="Profile picture" /></td>
+                <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                <td>@Html.DisplayFor(modelItem => item.LasName)</td>
+                <td>@Html.DisplayFor(modelItem => item.City)</td>
+                <td>@Html.DisplayFor(modelItem => item.DOB)</td>
+                <td>@Html.DisplayFor(modelItem => item.Job)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td>@Html.DisplayFor(modelItem => item.IsApproved)</td>
+                <td>
+                    @if (!item.IsApproved)
+                    {
+                        <input type="submit" value="Approve Servant" class="btn  btn-primary" asp-route-id="@item.Id" />
+                    }
+                    else
+                    {
+                        <input type="submit" value="Delete Approve Servant" class="btn  btn-danger" asp-route-id="@item.Id" />
+                    }
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</form>

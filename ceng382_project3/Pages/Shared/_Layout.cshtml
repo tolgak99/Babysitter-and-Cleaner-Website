@@ -1,0 +1,377 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using ceng382_project3.Data
+@using ceng382_project3.Models
+
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+<!DOCTYPE html>
+
+<html class="not-ie no-js" lang="en">
+
+<head>
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Get Your BabySitter</title>
+    <meta name="description" content="PetSitter - Responsive HTML5 Template - 1.0">
+    <meta name="author" content="http://themeforest.net/user/dan_fisher">
+
+
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+
+
+    <!-- CSS
+    ================================================== -->
+    <!-- Base + Vendors CSS -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/fonts/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="~/css/fonts/entypo/css/entypo.css">
+    <link rel="stylesheet" href="~/vendor/owl-carousel/owl.carousel.css" media="screen">
+    <link rel="stylesheet" href="~/vendor/owl-carousel/owl.theme.css" media="screen">
+    <link rel="stylesheet" href="~/vendor/magnific-popup/magnific-popup.css" media="screen">
+    <link rel="stylesheet" href="~/vendor/flexslider/flexslider.css" media="screen">
+
+    <!-- Theme CSS-->
+    <link rel="stylesheet" href="~/css/theme.css">
+    <link rel="stylesheet" href="~/css/theme-elements.css">
+    <link rel="stylesheet" href="~/css/animate.min.css">
+
+    <!-- Start Rating CSS -->
+    <link rel="stylesheet" href="~/css/starrating.css">
+    <link rel="stylesheet" href="~/css/Checkout.css">
+
+    <!-- Head Libs -->
+    <script src="~/vendor/modernizr.js"></script>
+
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="vendor/respond.min.js"></script>
+    <![endif]-->
+    <!--[if IE]>
+        <link rel="stylesheet" href="css/ie.css">
+    <![endif]-->
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="~/images/favicon.ico">
+    <link rel="apple-touch-icon" href="~/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="~/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="~/images/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="~/images/apple-touch-icon-144x144.png">
+
+</head>
+<body class="boxed">
+
+    <div class="site-wrapper site-wrapper__boxed">
+
+        <!-- Header -->
+        <header class="header header-menu-fullw">
+
+            <!-- Header Top Bar -->
+            <!-- <div class="header-top">
+            <div class="container">
+                <div class="header-top-right">
+                    <button class="btn btn-sm btn-default menu-link menu-link__tertiary">
+                        <i class="fa fa-user"></i>
+                    </button>
+                    <div class="menu-container">
+                        <ul class="header-top-nav header-top-nav__tertiary">
+                            <li><a asp-action="Register" asp-controller="Home"><i class="fa-pencil-square-o fa"></i> Register</a></li>
+                            <li><a href="page-login.html"><i class="fa-lock fa"></i> Login</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+            <!-- Header Top Bar / End -->
+
+            <div class="header-main">
+                <div class="container">
+
+                    <!-- Logo -->
+                    <div class="logo">
+                        <a asp-area="" asp-page="/Index"><img src="~/images/logo.png" alt="Babysitter"></a>
+                        <!-- <h1><a href="index.html"><strong>Baby</strong>sitter</a></h1> -->
+                        <p class="tagline hidden-xs hidden-sm">Best care for baby!</p>
+                    </div>
+                    <!-- Logo / End -->
+
+                    <button type="button" class="navbar-toggle">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Banner -->
+                    <div class="head-info">
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <ul class="head-info-list">
+                                <li><span>Your Budget: </span> <a asp-area="" asp-page="/Checkout"> @UserManager.GetUserAsync(User).Result.Budget</a> </li>
+                            </ul>
+                        }
+                        else
+                        {
+                            <ul class="head-info-list">
+                                <li><span>Call Us: </span> +90 537 537 5337</li>
+                            </ul>
+                        }
+                        <ul class="social-links social-links__rounded social-links__colored">
+                            <li><a href="https://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="https://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://myaccount.google.com/profile?pli=1"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="https://dribbble.com"><i class="fa fa-dribbble"></i></a></li>
+                            <li><a href="https://youtube.com"><i class="fa fa-youtube"></i></a></li>
+                            <li><a href="https://tr.pinterest.com"><i class="fa fa-pinterest"></i></a></li>
+                            <li><a href="https://instagram.com"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="https://linkedin.com"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                    <!-- Banner / End -->
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="nav-main">
+                <div class="container">
+                    <ul data-breakpoint="992" class="flexnav">
+                        <li class="active"><a asp-area="" asp-page="/Index">Home</a></li>
+                        <li>
+                            <a>Pages</a>
+                            <ul>
+                                <li><a asp-area="" asp-page="/AboutUs">About Us</a></li>
+                                <li><a asp-area="" asp-page="/Services">Services</a></li>
+                                <li><a asp-area="" asp-page="/Prices">Pricing Tables</a></li>
+                                <!-- <li><a href="page-team.html">Team</a></li> -->
+                                <!-- <li><a href="page-team-member.html">Team Member</a></li> -->
+                                <li><a asp-area="" asp-page="/FAQS">FAQs</a></li>
+                                <!-- <li><a href="page-fullwidth.html">Full Width</a></li> -->
+                                <!-- <li><a href="page-left-sidebar.html">Left Sidebar</a></li> -->
+                                <!-- <li><a href="page-right-sidebar.html">Right Sidebar</a></li> -->
+                                <!-- <li><a href="page-404.html">404</a></li> -->
+                            </ul>
+                        </li>
+                        <!-- <li>
+                        <a href="#">Features</a>
+                        <ul>
+                            <li><a href="features-shortcodes.html">Shortcodes</a></li>
+                            <li><a href="features-pricing-tables.html">Pricing Tables</a></li>
+                            <li><a href="features-typography.html">Typography</a></li>
+                            <li><a href="features-columns.html">Columns</a></li>
+                            <li><a href="features-icons.html">Icons</a></li>
+                        </ul>
+                    </li>-->
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            @if (!this.User.IsInRole("Admin"))
+                            {
+                                @if (UserManager.GetUserAsync(User).Result.Job == "Babysitter" || UserManager.GetUserAsync(User).Result.Job == "Nany" || UserManager.GetUserAsync(User).Result.Job == "Cleaner")
+                                {
+                                    <li>
+                                        <a href="#">Sitters/Jobs</a>
+                                        <ul>
+                                            <!--<li><a asp-area="" asp-page="/CreateToDo">Post a Profile</a></li>-->
+                                            <li><a asp-area="" asp-page="/ListToDo">My Appointments</a></li>
+                                            <li><a asp-area="" asp-page="/BabySitterList">Our BabySitters</a></li>
+                                            <!-- <li><a href="job-list.html">Pet Sitters List</a></li> -->
+                                        </ul>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a href="#">Sitters/Jobs</a>
+                                        <ul>
+                                            <!--<li><a asp-area="" asp-page="/CreateToDo">Post a Profile</a></li>-->
+                                            <li><a asp-area="" asp-page="/BabySitterList">Our BabySitters</a></li>
+                                            <!-- <li><a href="job-list.html">Pet Sitters List</a></li> -->
+                                        </ul>
+                                    </li>
+                                }
+                            }
+                            else if (this.User.IsInRole("Admin"))
+                            {
+                                <li>
+                                    <a href="#">Admin Panel</a>
+                                    <ul>
+                                        <li><a asp-area="" asp-page="/BabySitterList">Our BabySitters</a></li>
+                                        <li><a asp-area="" asp-page="/AprroveToDo">Dashboard</a></li>
+                                    </ul>
+                                </li>
+                            }
+                        }
+
+                        <!-- <li>
+                       <a href="blog-right-sidebar.html">Blog</a>
+                       <ul>
+                           <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
+                           <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
+                           <li><a href="blog-fullwidth.html">Blog Full Width</a></li>
+                           <li><a href="blog-post.html">Single Post</a></li>
+                       </ul>
+                    </li>-->
+                        <li><a asp-area="" asp-page="/Contacts"> Contacts  </a></li>
+                    </ul>
+                    <div class="navbar-collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <partial name="_LoginPartial.cshtml" />
+                    </div>
+                </div>
+            </nav>
+            <!-- Navigation / End -->
+
+        </header>
+
+        <div id="rt-6dad7448c532d941ae5c8f0f4296880a" data-floating="true" data-side="right" data-width="700" data-height="500" data-counter="14,23"></div>
+        <script src="https://rumbletalk.com/client/?HsoR7S4e"></script>
+
+
+        @RenderBody()
+        <footer class="footer" id="footer">
+            <div class="footer-widgets">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3">
+                            <!-- Widget :: Custom Menu -->
+                            <div class="widget_nav_menu widget widget__footer">
+                                <h3 class="widget-title">Did you know?</h3>
+                                <div class="widget-content">
+                                    Most robberies are committed by housekeepers or babysitters. Pay attention to these.
+                                </div>
+                            </div>
+                            <!-- /Widget :: Custom Menu -->
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <!-- Widget :: Tags Cloud -->
+                            <div class="widget_tag_cloud widget widget__footer">
+                                <h3 class="widget-title">Tags Cloud</h3>
+                                <div class="tagcloud">
+                                    <a href="#" class="btn btn-secondary btn-sm">Babysitting</a>
+                                    <a href="#" class="btn btn-secondary btn-sm">Babysitting Jobs</a>
+                                    <a href="#" class="btn btn-secondary btn-sm">Nannies</a>
+                                    <a href="#" class="btn btn-secondary btn-sm">Tutoring</a>
+                                    <a href="#" class="btn btn-secondary btn-sm">Tutors</a>
+                                    <a href="#" class="btn btn-secondary btn-sm">Child Care Jobs</a>
+                                    <a href="#" class="btn btn-secondary btn-sm">Nanny Jobs</a>
+                                    <a href="#" class="btn btn-secondary btn-sm">Child Care</a>
+                                </div>
+                            </div>
+                            <!-- /Widget :: Tags Cloud -->
+                        </div>
+
+                        <div class="clearfix visible-sm"></div>
+
+                        <div class="col-sm-6 col-md-3">
+                            <!-- Widget :: Latest Posts -->
+                            <div class="latest-posts-widget widget widget__footer">
+                                <h3 class="widget-title">From the Blog</h3>
+                                <div class="widget-content">
+                                    <ul class="latest-posts-list">
+                                        <li>
+                                            <h5 class="title"><a href="#">Morbi urna mi, sollicitudin eget nibh fringilla, dignissim mattis</a></h5>
+                                            <span class="date">July, 18 2015</span>
+                                        </li>
+                                        <li>
+                                            <h5 class="title"><a href="#">Ut mauris arcu, fringilla at ipsum in, porta molestie nisi.</a></h5>
+                                            <span class="date">July, 21 2015</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- /Widget :: Latest Posts -->
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <!-- Widget :: Newsletter -->
+                            <div class="widget_newsletter widget widget__footer">
+                                <h3 class="widget-title">Get Our Newsletter</h3>
+                                <div class="widget-content">
+                                    <p>Give your e-mail to be instantly informed about our advertisements and campaigns.  </p>
+
+                                    <form action="php/newsletter-form.php" method="POST" id="newsletter-form">
+                                        <div class="alert alert-success hidden" id="newsletter-alert-success">
+                                            <strong>Success!</strong> Thank you for subscribing.
+                                        </div>
+                                        <div class="alert alert-danger hidden" id="newsletter-alert-error">
+                                            <strong>Error!</strong> Something went wrong.
+                                        </div>
+                                        <div class="input-group">
+                                            <input type="email"
+                                                   value=""
+                                                   data-msg-required="Please enter email address."
+                                                   data-msg-email="Please enter a valid email address."
+                                                   class="form-control"
+                                                   placeholder="Enter your email here..."
+                                                   name="subscribe-email"
+                                                   id="subscribe-email">
+                                            <span class="input-group-btn">
+                                                <button type="submit" class="btn btn-success btn-block" data-loading-text="Loading...">Go!</button>
+                                            </span>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                            <!-- /Widget :: Newsletter -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6">
+                            Copyright &copy; 2021 <a asp-page="/Index">Babysitter</a> &nbsp;| &nbsp;All Rights Reserved
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            Created by <a href="http://themeforest.net/user/dan_fisher">Tolga KALAYCIOĞLU</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer / End -->
+
+    </div>
+    <!-- Main / End -->
+    <!-- Javascript Files
+    ================================================== -->
+    <script src="~/vendor/jquery-1.11.0.min.js"></script>
+    <script src="~/vendor/jquery-migrate-1.2.1.min.js"></script>
+    <script src="~/vendor/bootstrap.js"></script>
+    <script src="~/vendor/jquery.flexnav.min.js"></script>
+    <script src="~/vendor/jquery.hoverIntent.minified.js"></script>
+    <script src="~/vendor/jquery.flickrfeed.js"></script>
+    <script src="~/vendor/magnific-popup/jquery.magnific-popup.js"></script>
+    <script src="~/vendor/owl-carousel/owl.carousel.min.js"></script>
+    <script src="~/vendor/jquery.fitvids.js"></script>
+    <script src="~/vendor/jquery.appear.js"></script>
+    <script src="~/vendor/jquery.stellar.min.js"></script>
+    <script src="~/vendor/flexslider/jquery.flexslider-min.js"></script>
+
+    <!-- Newsletter Form -->
+    <script src="~/vendor/jquery.validate.js"></script>
+    <script src="~/js/newsletter.js"></script>
+
+    <script src="~/js/custom.js"></script>
+
+    <script>
+        jQuery(function ($) {
+            $('body').addClass('loading');
+        });
+
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                animation: "fade",
+                controlNav: true,
+                directionNav: true,
+                start: function (slider) {
+                    $('body').removeClass('loading');
+                }
+            });
+        });</script>
+
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

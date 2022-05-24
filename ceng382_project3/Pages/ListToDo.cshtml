@@ -1,0 +1,40 @@
+﻿@page
+@model ceng382_project3.Pages.ListToDoModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Customer Name
+            </th>
+            <th>
+                Appointment Date
+            </th>
+            <th>
+                City
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Phone Number
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i=0; i < Model.Users.Count; i++) 
+        {
+        <tr>
+            <td>@Model.Users[i].FirstName @Model.Users[i].LastName</td>
+            <td>@Model.Users[i].DeadLine</td>
+            <td>@Model.Users[i].City</td>
+            <td>@Model.Users[i].Address</td>
+            <td>@Model.Users[i].PhoneNumber</td>
+        </tr>
+        }
+    </tbody>
+</table>

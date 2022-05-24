@@ -1,0 +1,253 @@
+﻿@page
+@model ceng382_project3.Pages.AddRatingModel
+@{
+}
+<script>
+    function DoPostBack() {
+        document.formRate.submit();
+    }
+</script>
+
+<section class="page-content">
+    <div class="container">
+        @foreach (var item in Model.Servants)
+        {
+            <div class="row">
+                <div class="col-md-5">
+
+                    <figure class="alignnone">
+                        <img style="width: 100%; height: 100%;" src="data:image;base64,@System.Convert.ToBase64String(item.Picture)" id="profile-pic" alt="Profile picture" />
+                    </figure>
+
+                </div>
+
+                <div class="col-md-7">
+                    <div class="job-profile-info">
+                        <!-- Tabs -->
+                        <div class="tabs">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#tab1-1" data-toggle="tab">About</a></li>
+                                <li><a href="#tab1-2" data-toggle="tab">Experience</a></li>
+                            </ul>
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="tab1-1">
+                                    <div class="">
+                                        <h2 class="name">@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LasName)</h2>
+                                        <i class="tagline">Please write a few words about your job/service</i>
+                                        <ul class="meta">
+                                            <li>@Html.DisplayFor(modelItem => item.Job)</li>
+                                        </ul>
+                                        <ul class="info">
+                                            <li><i class="fa fa-map-marker"></i> Looking within 20 miles of <a href="#">@Html.DisplayFor(modelItem => item.City)</a></li>
+                                        </ul>
+
+                                        <div class="spacer-lg"></div>
+
+
+                                        @if (Model.isRated.Count == 0)
+                                        {
+                                            <h3 class="name">Rate Servant</h3>
+                                            <form method="post" name="formRate">
+                                                <div class="rate">
+                                                    <input asp-for="Rate" type="radio" id="star5" name="rate" value="5"
+                                                           onchange="DoPostBack();" />
+                                                    <label for="star5" title="text">5 stars</label>
+                                                    <input asp-for="Rate" type="radio" id="star4" name="rate" value="4"
+                                                           onchange="DoPostBack();" />
+                                                    <label for="star4" title="text">4 stars</label>
+                                                    <input asp-for="Rate" type="radio" id="star3" name="rate" value="3"
+                                                           onchange="DoPostBack();" />
+                                                    <label for="star3" title="text">3 stars</label>
+                                                    <input asp-for="Rate" type="radio" id="star2" name="rate" value="2"
+                                                           onchange="DoPostBack();" />
+                                                    <label for="star2" title="text">2 stars</label>
+                                                    <input asp-for="Rate" type="radio" id="star1" name="rate" value="1"
+                                                           onchange="DoPostBack();" />
+                                                    <label for="star1" title="text">1 star</label>
+                                                </div>
+                                            </form>
+                                        }
+                                         <a class="btn btn-primary" asp-page="CreateAppointment" asp-route-ratedUserID="@item.UserId"> Make an appointment</a>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="tab1-2">
+                                    <div class="row">
+                                        <div class="col-sm-4 col-md-4">
+                                            <h4>Skills</h4>
+                                            <div class="list list__arrow2">
+                                                <ul>
+                                                    <li>Cooking</li>
+                                                    <li>Laundry</li>
+                                                    <li>Grocery Shopping</li>
+                                                    <li>Errands</li>
+                                                    <li>Carpooling</li>
+                                                    <li>Travel</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4 col-md-4">
+                                            <h4>Experience</h4>
+                                            <div class="list list__arrow2">
+                                                <ul>
+                                                    <li>10 years of experience</li>
+                                                    <li>Comfortable babysitting for 2 children</li>
+                                                    <li>Willing to care for sick children</li>
+                                                    <li>Not experienced babysitting twins/multiples</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4 col-md-4">
+                                            <h4>Education</h4>
+                                            <div class="list list__arrow2">
+                                                <ul>
+                                                    <li>
+                                                        University of California, Berkeley<br>
+                                                        <span class="date text-muted"><i class="fa fa-calendar"></i> Jan 2009 - Mar 2010</span>
+                                                        <div class="position">Bachelor degree</div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Tabs / End -->
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="spacer-xl"></div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Description</h3>
+                    <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                </div>
+                <div class="col-md-6">
+                    <h3>Location</h3>
+                    <div class="job-location">
+                        <!-- Google Map -->
+                        <div class="googlemap-wrapper">
+                            <div id="map_canvas" class="map-canvas">
+                                @if (item.City == "Ankara")
+                                {
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d195884.20908020172!2d32.622338340892505!3d39.903555250647784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d347d520732db1%3A0xbdc57b0c0842b8d!2sAnkara!5e0!3m2!1str!2str!4v1623067270520!5m2!1str!2str" width="541" height="240" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                }
+                                else if (item.City == "İzmir")
+                                {
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d200065.39742764778!2d26.939290499891484!3d38.41786027593487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14bbd862a762cacd%3A0x628cbba1a59ce8fe!2zxLB6bWly!5e0!3m2!1str!2str!4v1623067552342!5m2!1str!2str" width="541" height="240" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                }
+                                else if (item.City == "İstanbul")
+                                {
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d192697.7944929281!2d28.871753148773497!3d41.005495393222496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa7040068086b%3A0xe1ccfe98bc01b0d0!2zxLBzdGFuYnVs!5e0!3m2!1str!2str!4v1623067518429!5m2!1str!2str" width="541" height="240" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                }
+                            </div>
+                        </div>
+                        <!-- Google Map / End -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="spacer-xl"></div>
+
+            <!-- Person Availability -->
+            <h3>Availability</h3>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-schedule">
+                    <thead>
+                    <th class="empty"></th>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thur</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
+                    <th>Sun</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="time">6am - 9am</td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="time">9am - 12pm</td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="time">12pm - 3pm</td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="time">3pm - 6pm</td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="time">6pm - 9pm</td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="time">9pm - 12am</td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td><i class="fa fa-circle"></i></td>
+                        </tr>
+                        <tr>
+                            <td>12am - 6am</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-schedule-legend text-right">
+                <i class="fa fa-circle"></i> &nbsp; Available
+            </div>
+            <!-- Person Availability / End -->
+
+        }
+        </div>
+</section>

@@ -1,0 +1,41 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using ceng382_project3.Data
+@using ceng382_project3.Models
+
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+
+<nav class="nav-main">
+    <div class="container">
+        <ul data-breakpoint="992" class="flexnav">
+
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <li class="nav-item" style="position:absolute; right:8%;">
+                    <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Profile</a>
+                </li>
+                <!-- @UserManager.GetUserName(User) -->
+                <li class="nav-item" style="position:absolute; right:0;">
+                    <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", "", new { area = "" })" method="post">
+                        <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                    </form>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item" style="position:absolute; right:13%;">
+                    <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login" title="Manage">Login</a>
+                </li>
+                <li class="nav-item" style="position:absolute; right:0;">
+                    <a>Register</a>
+                    <ul>
+                        <li><a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register" title="Manage">Register as Customer</a></li>
+                        <li><a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/RegisterCustomer" title="Manage">Register as Service</a></li>
+                    </ul>
+                </li>
+            }
+        </ul>
+    </div>
+</nav>

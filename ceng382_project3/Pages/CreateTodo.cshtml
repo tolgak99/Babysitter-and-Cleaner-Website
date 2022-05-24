@@ -1,0 +1,115 @@
+﻿@page
+@model ceng382_project3.Pages.CreateTodoModel
+@{
+    ViewData["Title"] = "Create Todo";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<section class="page-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Post a Profile</h1>
+            </div>
+            <div class="col-md-6">
+                <ul class="breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Babysitters</a></li>
+                    <li class="active">Post a Profile</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Page Heading / End -->
+<!-- Page Content -->
+<section class="page-content">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <!-- Profile Form -->
+                <form  method="post" id="submit-job-form" class="job-manager-form" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <fieldset>
+                        <label>Have an account?</label>
+                        <div class="field account-sign-in">
+                            <p>
+                                <a class="btn btn-primary btn-sm" href="#"><i class="fa fa-key"></i> Sign in</a>
+                            </p>
+
+                            <div class="alert alert-info alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="fa fa-times"></i></button>
+                                If you don‘t have an account you can create one below by entering your email address. A password will be  automatically emailed to you.
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <img style="border-radius: 50%; width: 50%; height: 50%;" src="data:image;base64,@System.Convert.ToBase64String(Model.ProfilePicture)" id="profile-pic" alt="Profile picture" />
+                    <br>
+
+                    <fieldset>
+                        <div class="field">
+                            <label asp-for="Input.FirstName"></label>
+                            <input asp-for="Input.FirstName" class="form-control" disabled />
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <div class="field">
+                            <label asp-for="Input.LasName"></label>
+                            <input asp-for="Input.LasName" class="form-control" disabled />
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <div class="field">
+                            <label asp-for="Input.Email"></label>
+                            <input asp-for="Input.Email" class="form-control" disabled />
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <div class="field">
+                            <label asp-for="Input.City"></label>
+                            <input asp-for="Input.City" class="form-control" disabled />
+                        </div>
+                    </fieldset>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <fieldset class="fieldset-job_type">
+                                <label for="job_type">Job Type</label>
+                                <div class="field select-style">
+                                    <select asp-for="Todo.Task" asp-items="Model.Jobs" class="form-control"></select>
+                                    <span asp-validation-for="Todo.Task" class="text-danger"></span>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Todo.Deadline" class="control-label">Deadline (mm.dd.yyyy)</label> <!--User defined label-->
+                        <input asp-for="Todo.Deadline" class="form-control" />
+                        <span asp-validation-for="Todo.Deadline" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Todo.Timestamp" class="control-label">Deadline (mm.dd.yyyy)</label> <!--User defined label-->
+                        <input asp-for="Todo.Timestamp" class="form-control" />
+                        <span asp-validation-for="Todo.Timestamp" class="text-danger"></span>
+                    </div>
+
+                    <div class="spacer"></div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Create Todo" class="btn  btn-primary" />
+                    </div>
+
+
+                </form>
+                <!-- Profile Form / End -->
+            </div>
+        </div>
+
+    </div>
+</section>
